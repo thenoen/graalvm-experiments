@@ -41,10 +41,11 @@ executeWith $HOTSPOTVM_SDK $MAIN_CLASS $UNOPTIMIZED_INPUT
 echo -e "=================================\n"
 echo -e "Bonus: java program is compiled to native image and is used with unoptimized input - expected duration is few minutes:\n"
 $GRAALVM_SDK/native-image --no-server $MAIN_CLASS
+time ./topten $OPTIMIZED_INPUT
 time ./topten $UNOPTIMIZED_INPUT
 
 # CLEANUP
 rm $OPTIMIZED_INPUT
 rm $UNOPTIMIZED_INPUT
-rm $MAIN_CLASS.class
+rm *.class
 rm topten
